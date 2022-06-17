@@ -61,7 +61,7 @@
 			<div class="col">
 
 				<div class="product_grid">
-					@foreach ($cat->products as $product)
+					@foreach ($products as $product)
 
 					@php
 					$image = '';
@@ -167,15 +167,7 @@
 	</div>
 </div>
 <script src="js/categories.js"></script>
-@endsection
-
 @section('custom_js')
-<script>
-	$(document).ready(function() {
-		$('.product_sorting_btn').click(function() {
-			let orderBy = $(this).data('order')
-			console.log(orderBy)
-		})
-	})
-</script>
+
+@endsection
 @endsection

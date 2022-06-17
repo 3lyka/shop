@@ -5,7 +5,7 @@ $image = '';
 if(count($product->images) > 0){
 $image = $product->images[0]['image'];
 } else {
-$image = 'no_image.png';
+$image = 'no_cart.png';
 }
 @endphp
 <div class="product">
