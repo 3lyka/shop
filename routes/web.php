@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', 'HomeController')->name('home.index');
-Route::get('/{category}/{product_id}', 'ProductController@show')->name('product.show');
+Route::get('/', 'HomeController@index')->name('product.index');
+Route::get('/{cat}', 'ProductController@showCategory')->name('showCategory');
+Route::get('/{cat}/{alias}', 'ProductController@show')->name('product.show');
 

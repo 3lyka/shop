@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
 		$table->integer('price'); //цена
 		$table->integer('new_price')->default(0);
 		$table->boolean('in_stock');
-		$table->text('description'); //в наличии
+		$table->text('description');
             $table->timestamps();
         });
     }

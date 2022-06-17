@@ -24,7 +24,7 @@ class Request extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 
         ];
     }
 }

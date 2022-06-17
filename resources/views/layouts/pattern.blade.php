@@ -27,7 +27,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
-							<div class="logo"><a href="{{route('home.index')}}">Sublime.</a></div>
+							<div class="logo"><a href="{{route('product.index')}}">Sublime.</a></div>
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
@@ -43,11 +43,9 @@
 									<li class="hassubs">
 										<a href="categories.html">Categories</a>
 										<ul>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
+											@foreach ($categories as $category)
+											<li><a href="{{route('showCategory', $category->alias)}}">{{$category->title}}</a></li>
+											@endforeach
 										</ul>
 									</li>
 									<li><a href="contact.html">Contact</a></li>
@@ -217,6 +215,7 @@
 	<script src="/plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="/js/custom.js"></script>
 	@yield('custom_js')
+
 </body>
 
 </html>
