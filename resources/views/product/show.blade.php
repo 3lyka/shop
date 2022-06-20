@@ -52,16 +52,16 @@
 						</div>
 						<div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
 							@if ($image == 'no_cart.png')
-								<div class="details_image_thumbnail active" data-image="/images/{{$image}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
+							<div class="details_image_thumbnail active" data-image="/images/{{$image}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
 							@else
-								@foreach ($item->images as $img)
-										@if ($loop->first)
-								<div class="details_image_thumbnail active" data-image="/images/{{$img ['image']}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
-											@else
-								<div class="details_image_thumbnail" data-image="/images/{{$img ['image']}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
+							@foreach ($item->images as $img)
+							@if ($loop->first)
+							<div class="details_image_thumbnail active" data-image="/images/{{$img ['image']}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
+							@else
+							<div class="details_image_thumbnail" data-image="/images/{{$img ['image']}}"><img src="/images/details_1.jpg" alt="{{$item->title}}"></div>
 
-										@endif
-								@endforeach
+							@endif
+							@endforeach
 							@endif
 						</div>
 					</div>
@@ -218,7 +218,40 @@
 </div>
 
 @section('custom_js')
-<script src="/js/product.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.cart_button').click(function(event) {
+			event.preventDefault()
+			addToCart()
+		})
+	})
+
+	function addToCart() {
+		let id = $('.details_name').data('id')
+		let qty = parseInt($('#quantity_input').val())
+		let total_qty = parseInt($('.cart-qty').text())
+		total_qty += qty
+		$('.cart-qty').text(total_qty)
+		$.ajax({
+			url: "{{route('addToCart')}}",
+			type: "POST",
+			data: {
+				id: id,
+				qty: qty,
+			},
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			success: (data) => {
+				console.log(data)
+			},
+			error: (data) => {
+				console.log(data)
+			}
+		});
+	}
+</script>
+<script src="../js/product.js"></script>
 @endsection
 
 @endsection

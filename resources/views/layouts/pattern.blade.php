@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Sublime project">
@@ -13,8 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="/styles/responsive.css">
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 	@yield('custom_css')
 	<title>{{ config('app.name', 'shop') }}</title>
 </head>
@@ -43,7 +44,7 @@
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Categories</a>
+										<a href="#">Categories</a>
 										<ul>
 											@foreach ($categories as $category)
 											<li><a href="{{route('showCategory', $category->alias)}}">{{$category->title}}</a></li>
@@ -65,7 +66,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z" />
 											</g>
 										</svg>
-										<div>Cart <span>(0)</span></div>
+										<div>Cart (<span class="cart-qty">{{\Cart::session($_COOKIE['cart_id'])->getTotalQuantity()}}</span>)</div>
 									</a>
 								</div>
 								<div class="search">

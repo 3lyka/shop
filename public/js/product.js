@@ -186,7 +186,7 @@ $(document).ready(function()
 	function initImage()
 	{
 		var images = $('.details_image_thumbnail');
-		var selected = $('.details_image_large img');
+		var selected = $('.details_image_large image');
 
 		images.each(function()
 		{
